@@ -1,0 +1,79 @@
+<div class="container-fluid ticket" ng-init="findShowById()">
+  <div>
+    <div class="row">
+        <div class="col-md-2">
+            <div>
+                <img src="http://placehold.it/150x150">
+            </div>
+            <div>
+                {{show.user.displayname}}
+            </div>
+        </div>
+
+        <div class="col-md-10">
+
+            <div class="form-group">
+                <i class="fa fa-film"></i> <label class="control-label" for="show_name">Name</label>
+                <div class="controls">
+                    {{show.show_name}}
+
+                </div>
+
+            </div>
+            <hr>
+            <div class="form-group">
+                <i class="fa fa-building"></i>  <label class="control-label" for="show_venue">Venue</label>
+                <div class="controls">
+                    {{show.show_venue}}
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <i class="fa fa-clock-o"></i> <label class="control-label" for="show_time">Time</label>
+                <div class="controls">
+                    {{show.show_time|date:global.isMeridian?global.dateTimeFormatMeridian:global.dateTimeFormat}}<br>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <i class="fa fa-phone"></i> <label class="control-label" for="contact_phone">Phone</label>
+                <div class="controls">
+                    {{show.contact_phone}}
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <i class="fa fa-reply"></i> <label class="control-label" for="contact_email">Email</label>
+                <div class="controls">
+                    {{show.contact_email}}
+                </div>
+            </div>
+            <hr>
+            <div class="form-group">
+                <i class="fa fa-comment"></i> <label class="control-label" for="contact_notes">Notes</label>
+                <div class="controls">
+                    {{show.contact_notes}}
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+</div>
+<div class="well">
+    <h4>Comments <button class="btn btn-primary">Add Comment</button></h4>
+    <hr>
+    <ul class="media-list">
+        <li class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object" src=".." alt="">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">Media heading</h4>
+                Test Comment
+            </div>
+        </li>
+    </ul>
+</div>
+
+<!-- <pre>{{show}}</pre> -->

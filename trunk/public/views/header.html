@@ -1,0 +1,36 @@
+<div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#!"><i class="fa fa-ticket fa-lg"></i>Tickets2Spare.com</a>
+        </div>
+        <div class="collapse navbar-collapse" id="mainNavBar" data-ng-controller="HeaderController" ng-init="selected=0">
+            <ul id="leftMenuList" class="nav navbar-nav" data-ng-show="global.authenticated">
+                <li>
+                    <a  ng-class="{'active':selected==0, 'inactive':!selected==0}" ng-click="selected=0" id="menuHome" ui-sref="home"><i class="fa fa-home"></i> Home</a>
+                </li>
+                <li>
+                    <a ng-class="{'active':selected==1, 'inactive':!selected==1}" ng-click="selected=1" id="menuMyListings" ui-sref="mylistings"><i class="fa fa-list"></i> My Listings</a>
+                </li>
+            </ul>
+            <ul id="rightMenuList" class="nav navbar-nav navbar-right">
+                <li><a class="btn" data-toggle="modal" data-target="#loginModal" data-ng-hide="global.authenticated"><i class="fa fa-user"></i> Login</a></li>
+                <li class="dropdown" data-ng-show="global.authenticated">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-user"></i> {{global.user.displayname}} <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a ui-sref="userprefs"><i class="fa fa-gear"></i> Preferences</a>
+                        </li>
+                        <li><a href="/signout"><i class="fa fa-sign-out"></i> Signout</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+</div>
+

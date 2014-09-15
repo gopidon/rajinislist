@@ -1,0 +1,385 @@
+/* Common elements */
+body{
+    padding-top:40px; padding-left: 5px; padding-right: 5px;padding-bottom: 5px;
+
+}
+
+.content {
+    margin-top:50px;
+    width:100%
+}
+
+footer {
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    background:#ddd;
+    -webkit-box-shadow:0 8px 6px 6px black;
+    -moz-box-shadow:0 8px 6px 6px black;
+    box-shadow:0 8px 6px 6px black
+}
+
+footer p {
+    padding:5px 0 12px 10px
+}
+
+
+
+/* bootstrap related */
+
+/* Make Navigation Toggle on Desktop Hover */
+.dropdown:hover >.dropdown-menu {
+    display: block;
+}
+
+.pac-container {
+    background-color: #FFF;
+    z-index: 20000;
+    position: fixed;
+    display: inline-block;
+    float: left;
+}
+
+
+
+.navbar .nav > li > .dropdown-menu::before {
+    position: absolute;
+    top: -7px;
+    left: 9px;
+    display: inline-block;
+    border-right: 7px solid transparent;
+    border-bottom: 7px solid #CCC;
+    border-left: 7px solid transparent;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+    content: '';
+}
+.navbar .nav > li > .dropdown-menu::after {
+    position: absolute;
+    top: -6px;
+    left: 10px;
+    display: inline-block;
+    border-right: 6px solid transparent;
+    border-bottom: 6px solid white;
+    border-left: 6px solid transparent;
+    content: '';
+}
+
+.navbar .nav>li>a.brand {
+    padding-left:20px;
+    margin-left:0
+}
+
+.navbar-default .navbar-brand {
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+    color: #ff7f50;
+    -webkit-transform:rotate(-6deg);
+    -moz-transform:rotate(-6deg);
+    -o-transform:rotate(-6deg);
+    -ms-transform:rotate(-6deg);
+    transform:rotate(-6deg);
+}
+
+#leftMenuList>li{
+    margin-left: 5px;
+}
+
+#leftMenuList>li>a {
+    font-weight: 400;
+    color: #fff;
+}
+
+
+#leftMenuList>li>a:hover{
+    color: #fff;
+    background-color: #ff7f50;
+    border-radius: 5px;
+}
+
+#leftMenuList>li>a.active{
+    color: #fff;
+    background-color: #ff7f50;
+    border-radius: 5px;
+}
+
+#rightMenuList>li>a {
+    font-weight: 400;
+    color: #fff;
+}
+
+
+.gridStyle {
+    margin-top: 10px;
+    border: 1px solid rgb(212,212,212);
+    height: 300px
+}
+
+.margin-bottom-sm{
+    margin-bottom: 8px;
+}
+
+.margin-bottom{
+    margin-bottom: 12px;
+}
+
+
+/* numbered buttons */
+#status-buttons                 {  }
+#status-buttons a               {  display:inline-block; font-size:12px; margin-right:10px; text-align:center;  }
+#status-buttons a:hover         { text-decoration:none; }
+#status-buttons a span.number   { background:#FFF; color:#000 ;  display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;  border-radius: 50%}
+#status-buttons span.text {background:#FFF}
+
+/* active buttons */
+#status-buttons a.active span.number   { color:#FFF; background:#2FA4E7; }
+#status-buttons a.active span.text   { font-weight:bold; }
+
+/* ANIMATION STYLINGS
+============================================================================= */
+#signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; }
+
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#form-views.ng-enter,
+#form-views.ng-leave      { position:absolute; left:30px; right:30px;
+
+}
+
+/* enter animation */
+#signup-form.fromNext #form-views.ng-enter            {
+    -webkit-animation:slideInRight 0.7s both ease;
+    -moz-animation:slideInRight 0.7s both ease;
+    animation:slideInRight 0.7s both ease;
+}
+
+#signup-form.fromPrevious #form-views.ng-enter           {
+    -webkit-animation:slideInLeft 0.7s both ease;
+    -moz-animation:slideInLeft 0.7s both ease;
+    animation:slideInLeft 0.7s both ease;
+}
+
+/* leave animation */
+#signup-form.fromNext #form-views.ng-leave            {
+    -webkit-animation:slideOutLeft 0.7s both ease;
+    -moz-animation:slideOutLeft 0.7s both ease;
+    animation:slideOutLeft 0.7s both ease;
+}
+
+#signup-form.fromPrevious #form-views.ng-leave{
+    -webkit-animation:slideOutRight 0.7s both ease;
+    -moz-animation:slideOutRight 0.7s both ease;
+    animation:slideOutRight 0.7s both ease;
+}
+
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+    to      { transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {
+    to      { -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to      { -webkit-transform: translateX(-200%); }
+}
+
+/* slide in from the right */
+@keyframes slideInRight {
+    from    { transform:translateX(200%); }
+    to      { transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from    { -moz-transform:translateX(200%); }
+    to      { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from    { -webkit-transform:translateX(200%); }
+    to      { -webkit-transform: translateX(0); }
+}
+
+/* slide in left */
+
+@keyframes slideInLeft {
+    from    { transform:translateX(-200%); }
+    to      { transform: translateX(0); }
+}
+@-moz-keyframes slideInLeft {
+    from    { -moz-transform:translateX(-200%); }
+    to      { -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInLeft {
+    from    { -webkit-transform:translateX(-200%); }
+    to      { -webkit-transform: translateX(0); }
+}
+
+
+/* slide out right */
+
+@keyframes slideOutRight {
+    to      { transform: translateX(200%); }
+}
+@-moz-keyframes slideOutRight {
+    to      { -moz-transform: translateX(200%); }
+}
+@-webkit-keyframes slideOutRight {
+    to      { -webkit-transform: translateX(200%); }
+}
+
+/* Enable sub-menus in bootstrap menus manually*/
+
+.dropdown-submenu {
+    position:relative;
+}
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+    display:block;
+}
+.dropdown-submenu>a:after {
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+.dropdown-submenu:hover>a:after {
+    border-left-color:#ffffff;
+}
+.dropdown-submenu.pull-left {
+    float:none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+/* Angular maps */
+
+.angular-google-map-container { height: 400px}
+
+
+
+/* Other */
+.ticket {
+    font-family: Arial;
+    font-size: 12px;
+    font-weight: bold;
+    position: relative !important;
+    background: #ff7f50;
+    padding: 10px;
+    margin: 0 5px 5px 0;
+}
+
+.ticket>div {
+    outline: 1px rgba(255,255,255,0.4) dashed;
+    border: 1px rgba(0,0,0,0.3) dashed;
+    padding: 4px 10px 4px 20px;
+    text-decoration: none;
+
+}
+
+.ticket:after {
+    content: "";
+    position: absolute !important;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    border-right: #fff 7px solid;
+    border-bottom: #fff 7px solid;
+    -moz-border-radius: 0 0 20px 0;
+    -webkit-border-radius: 0 0 20px 0;
+    border-radius: 0 0 20px 0;
+}
+
+.ticket:before {
+    content: "";
+    position: absolute !important;
+    z-index: 100;
+    top: 0;
+    right: 0;
+    border-left: #fff 7px solid;
+    border-bottom: #fff 7px solid;
+    -moz-border-radius: 0 0 0 20px;
+    -webkit-border-radius: 0 0 0 20px;
+    border-radius: 0 0 0 20px;
+}
+
+.ticket>div:after {
+    content: "";
+    position: absolute !important;
+    z-index: 100;
+    bottom: 0;
+    left: 0;
+    border-right: #fff 7px solid;
+    border-top: #fff 7px solid;
+    -moz-border-radius: 0 20px 0 0;
+    -webkit-border-radius: 0 20px 0 0;
+    border-radius: 0 20px 0 0;
+}
+
+.ticket>div:before {
+    content: "";
+    position: absolute !important;
+    z-index: 1000;
+    bottom: 0;
+    right: 0;
+    border-left: #fff 7px solid;
+    border-top: #fff 7px solid;
+    -moz-border-radius: 20px 0 0 0;
+    -webkit-border-radius: 20px 0 0 0;
+    border-radius: 20px 0 0 0;
+}
+
+.ticket .circle {
+    position: absolute !important;
+    z-index: 100;
+    border: 5px #fff solid;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    margin-top: -5px;
+    width: 0;
+    height: 0;
+    top: 50%;
+    left: 15px;
+    -moz-box-shadow: 0 -1px 0 rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.3);
+    -webkit-box-shadow: 0 -1px 0 rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 -1px 0 rgba(0,0,0,0.5),
+    0 1px 0 rgba(255,255,255,0.3);
+}
+
+.ticket a{
+    color: white;
+    text-decoration: underline;
+}
+
+.right-inner-addon {
+    position: relative;
+}
+
+.right-inner-addon i {
+    position: absolute;
+    right: 0px;
+    padding: 10px 12px;
+    pointer-events: none;
+}

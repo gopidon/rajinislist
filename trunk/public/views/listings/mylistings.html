@@ -1,0 +1,140 @@
+<div  style="padding-left: 10px" class = "container" data-ng-controller="ShowsController" data-ng-init="findShowsByUser()">
+    <div class="page-header">
+        <h2>Listings</h2>
+    </div>
+    <a class="btn btn-primary" ui-sref="viewListing({'showId':mySelections[0].id})">View</a>
+    <button class="btn btn-primary" ng-click="openCreateModal()">Create</button>
+    <button class="btn btn-primary" ng-click="openUpdateModal()">Update</button>
+    <button class="btn btn-primary" ng-click="openDeleteModal()">Delete</button>
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+    <div>{{mySelections}}</div>
+
+
+    <!-- Create Modal related -->
+    <script type="text/ng-template" id="createModal.html">
+        <form name="createListingForm" class="form-horizontal" data-ng-submit="create()" novalidate>
+            <div class="modal-header">
+                <h3 class="modal-title">Create Listing</h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group" ng-class="{ 'has-error' : createListingForm.show_name.$invalid && !createListingForm.show_name.$pristine }">
+                    <label class="control-label" for="show_name">Name</label>
+                    <div class="controls">
+                        <input type="text" class="form-control" data-ng-model="newShow.show_name" id="show_name" name="show_name" placeholder="Enter Name" required>
+                        <p ng-show="createListingForm.show_name.$invalid && !createListingForm.show_name.$pristine" class="help-block">Name is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : createListingForm.show_venue.$invalid && !createListingForm.show_venue.$pristine }">
+                    <label class="control-label" for="show_venue">Venue</label>
+                    <div class="controls">
+                        <input type="text" googleplace class="form-control" data-ng-model="newShow.show_venue" id="show_venue" name="show_venue" placeholder="Enter Venue">
+                        <p ng-show="createListingForm.show_venue.$invalid && !createListingForm.show_venue.$pristine" class="help-block">Venue is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : createListingForm.show_date.$invalid && !createListingForm.show_date.$pristine}">
+                    <label class="control-label" for="show_date">Date</label>
+                    <div class="controls">
+                        <p class="input-group">
+                            <input type="text" name="show_date" class="form-control" ng-click="open($event)" datepicker-popup="{{global.dateFormat}}" is-open="$parent.opened" data-ng-model="newShow.show_time" close-text="Close" id="show_date" placeholder="Enter Date" required>
+                                <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                        </p>
+                        <p ng-show="createListingForm.show_date.$invalid && !createListingForm.show_date.$pristine" class="help-block">Date is required.</p>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : createListingForm.show_time.$invalid && !createListingForm.show_time.$pristine}">
+                    <label class="control-label" for="show_time">Time</label>
+                    <div class="controls">
+                        <timepicker id="show_time" name="show_time" data-ng-model="newShow.show_time" hour-step="global.hourStep" minute-step="global.minStep" show-meridian="global.isMeridian"></timepicker>
+                        <p ng-show="createListingForm.show_time.$invalid && !createListingForm.show_time.$pristine" class="help-block">Time is required.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="contact_phone">Phone</label>
+                    <div class="controls">
+                        <input class="form-control" type="text" data-ng-model="newShow.contact_phone" id="contact_phone" placeholder="Enter phone#">
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : createListingForm.contact_email.$invalid && !createListingForm.contact_email.$pristine }">
+                    <label class="control-label" for="contact_email">Email</label>
+                    <div class="controls">
+                        <input class="form-control" type="email" data-ng-model="newShow.contact_email" id="contact_email" name="contact_email" placeholder="Enter email">
+                        <p ng-show="createListingForm.contact_email.$invalid && !createListingForm.contact_email.$pristine" class="help-block">Enter a valid email.</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="contact_notes">Notes</label>
+                    <div class="controls">
+                        <textarea class="form-control" data-ng-model="newShow.contact_notes" id="contact_notes" cols="30" rows="10" placeholder="Notes"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary" ng-disabled="createListingForm.$invalid">
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+
+        </form>
+    </script>
+
+    <!-- Update Modal related -->
+
+    <script type="text/ng-template" id="updateModal.html">
+        <form class="form-horizontal" data-ng-submit="update()">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Listing</h3>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label class="control-label" for="name">Name</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="customer.name" id="name" placeholder="Customer name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="description">Description</label>
+                    <div class="controls">
+                        <textarea data-ng-model="customer.description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="age">Age</label>
+                    <div class="controls">
+                        <input type="number" data-ng-model="customer.age" id="age" placeholder="Customer age" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="type">Type</label>
+                    <div class="controls">
+                        <input type="text" data-ng-model="customer.type" id="type" placeholder="Customer type" required>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary">
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </script>
+
+
+
+    <!-- Delete Modal related -->
+    <script type="text/ng-template" id="confirmDeleteModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirm</h3>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete the listing {{show.show_name}}?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="delete()">Delete</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>

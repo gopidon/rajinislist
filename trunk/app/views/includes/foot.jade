@@ -1,0 +1,62 @@
+//JQuery
+script(type='text/javascript', src='/lib/jquery/dist/jquery.js')
+
+
+//AngularJS
+script(type='text/javascript', src='/lib/angular/angular.js')
+script(type='text/javascript', src='/lib/angular-cookies/angular-cookies.js')
+script(type='text/javascript', src='/lib/angular-resource/angular-resource.js')
+script(type='text/javascript', src='/lib/angular-ui-router/release/angular-ui-router.js')
+script(type='text/javascript', src='/lib/angular-animate/angular-animate.js')
+script(type='text/javascript', src='/lib/angular-route/angular-route.js')
+
+//Angular Translate
+script(type='text/javascript', src='/lib/angular-translate/angular-translate.js')
+script(type='text/javascript', src='/lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js')
+
+//Bootstrap JS
+script(type='text/javascript', src='/lib/bootstrap/dist/js/bootstrap.js')
+
+//Angular UI
+script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap.js')
+script(type='text/javascript', src='/lib/angular-bootstrap/ui-bootstrap-tpls.js')
+script(type='text/javascript', src='/lib/angular-ui-utils/modules/route/route.js')
+
+
+
+//Custom angular UI
+script(type='text/javascript', src='/lib/moment/moment.js')
+script(type='text/javascript', src='/lib/angular-bootstrap-custom/timepicker/position.js')
+script(type='text/javascript', src='/lib/angular-bootstrap-custom/timepicker/psTimePicker.js')
+script(type='text/javascript', src='/lib/angular-bootstrap-custom/timepicker/timepicker.js')
+script(type='text/javascript', src='/lib/angular-bootstrap-custom/timepicker/timepicker-tpl.js')
+script(type='text/javascript', src='/lib/angular-bootstrap-custom/ui-bootstrap-custom.js')
+
+//ng-grid
+script(type='text/javascript', src='/lib/ng-grid/ng-grid-2.0.11.min.js')
+
+//Application Init
+script(type='text/javascript', src='/js/app.js')
+script(type='text/javascript', src='/js/config.js')
+script(type='text/javascript', src='/js/directives.js')
+script(type='text/javascript', src='/js/filters.js')
+
+//Application Services
+script(type='text/javascript', src='/js/services/global.js')
+script(type='text/javascript', src='/js/services/articles.js')
+script(type='text/javascript', src='/js/services/customers.js')
+script(type='text/javascript', src='/js/services/lookups.js')
+
+//Application Controllers
+script(type='text/javascript', src='/js/controllers/articles.js')
+script(type='text/javascript', src='/js/controllers/customers.js')
+script(type='text/javascript', src='/js/controllers/users.js')
+script(type='text/javascript', src='/js/controllers/index.js')
+script(type='text/javascript', src='/js/controllers/header.js')
+script(type='text/javascript', src='/js/init.js')
+
+
+
+if (process.env.NODE_ENV == 'development')
+    //Livereload script rendered 
+    script(type='text/javascript', src='http://localhost:35729/livereload.js')

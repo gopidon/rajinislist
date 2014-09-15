@@ -1,0 +1,145 @@
+<div  style="padding-left: 10px" class = "container" data-ng-controller="CustomersController" data-ng-init="find()">
+    <div class="page-header">
+        <h2>Customers</h2>
+    </div>
+    <button class="btn btn-primary" ng-click="openCreateModal()">Create</button>
+    <button class="btn btn-primary" ng-click="openUpdateModal()">Update</button>
+    <button class="btn btn-primary" ng-click="openDeleteModal()">Delete</button>
+    <div class="gridStyle" ng-grid="gridOptions"></div>
+    <div>{{mySelections}}</div>
+
+
+    <!-- Create Modal related -->
+    <script type="text/ng-template" id="createModal.html">
+     <form class="form-horizontal" data-ng-submit="create()">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Customer</h3>
+            </div>
+            <div class="modal-body">
+
+                    <div class="control-group">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" class="form-control" data-ng-model="newCustomer.name" id="name" placeholder="Customer name" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="description">Description</label>
+                        <div class="controls">
+                            <textarea class="form-control" data-ng-model="newCustomer.description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="age">Age</label>
+                        <div class="controls">
+                            <input class="form-control" type="number" data-ng-model="newCustomer.age" id="age" placeholder="Customer age" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="type">Type</label>
+                        <div class="controls">
+                            <input class="form-control" type="text" data-ng-model="newCustomer.type" id="age" placeholder="Type" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="startdate">Start Date</label>
+                        <div class="controls">
+                            <p class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{global.dateFormat}}" is-open="$parent.opened" data-ng-model="newCustomer.startdate" close-text="Close" id="startdate" placeholder="Start Date" required>
+                                <span class="input-group-btn">
+                                     <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="from">From</label>
+                        <div class="controls">
+                            <timepicker id="from" data-ng-model="newCustomer.from" hour-step="global.hourStep" minute-step="global.minStep" show-meridian="global.isMeridian"></timepicker>
+                        </div>
+                     </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="to">To</label>
+                        <div class="controls">
+                            <timepicker  id="to" data-ng-model="newCustomer.to" hour-step="global.hourStep" minute-step="global.minStep" show-meridian="global.isMeridian"></timepicker>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <label class="control-label" for="city">City</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="newCustomer.lookup" placeholder="Start typing ..." typeahead="city as city.value for city in getCities($viewValue)"  typeahead-loading="loadingCities" class="form-control">
+                            <i ng-show="loadingCities" class="glyphicon glyphicon-refresh"></i>
+                        </div>
+                    </div>
+
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary">
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+     </form>
+    </script>
+
+    <!-- Update Modal related -->
+
+    <script type="text/ng-template" id="updateModal.html">
+        <form class="form-horizontal" data-ng-submit="update()">
+            <div class="modal-header">
+                <h3 class="modal-title">Create Customer</h3>
+            </div>
+            <div class="modal-body">
+
+                    <div class="control-group">
+                        <label class="control-label" for="name">Name</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="customer.name" id="name" placeholder="Customer name" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="description">Description</label>
+                        <div class="controls">
+                            <textarea data-ng-model="customer.description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="age">Age</label>
+                        <div class="controls">
+                            <input type="number" data-ng-model="customer.age" id="age" placeholder="Customer age" required>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label class="control-label" for="type">Type</label>
+                        <div class="controls">
+                            <input type="text" data-ng-model="customer.type" id="type" placeholder="Customer type" required>
+                        </div>
+                    </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <input type="submit" class="btn btn-primary">
+                <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+            </div>
+        </form>
+    </script>
+
+
+
+    <!-- Delete Modal related -->
+    <script type="text/ng-template" id="confirmDeleteModal.html">
+        <div class="modal-header">
+            <h3 class="modal-title">Confirm</h3>
+        </div>
+        <div class="modal-body">
+            Are you sure you want to delete the customer {{customer.name}}?
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="delete()">Delete</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+</div>
+
+

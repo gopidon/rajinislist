@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+    <title>Node Authentication</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="lib/fontawesome/css/font-awesome.min.css">
+    <style>
+        body 		{ padding-top:80px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+        <a href="/signout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        <div class="col-md-6">
+            <div class="well">
+                <h3><span class="fa fa-user"></span> Local</h3>
+
+                <p>
+                    <strong>Id</strong>: <%= user.id %><br>
+                    <strong>Username</strong>: <%= user.username %><br>
+                    <strong>Display Name</strong>: <%= user.name %><br>
+                    <strong>Email</strong>: <%= user.email %><br>
+                    <strong>password</strong>: <%= user.hashedPassword %>
+                </p>
+
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="well">
+                <h3 class="text-primary"><span class="fa fa-facebook"></span> Facebook</h3>
+
+                <p>
+                    <strong>Facebook Id</strong>: <%= user.facebookUserId %><br>
+                    <strong>Username</strong>: <%= user.facebookUserName %><br>
+                    <strong>Display Name</strong>: <%= user.facebookDisplayName %><br>
+                    <strong>Email</strong>: <%= user.facebookEmail %><br>
+                    <strong>Token</strong>: <%= user.facebookToken %><br>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+
+        <!-- TWITTER INFORMATION -->
+        <div class="col-md-6">
+            <div class="well">
+                <h3 class="text-info"><span class="fa fa-twitter"></span> Twitter</h3>
+
+                <p>
+                    <strong>Twitter Id</strong>: <%= user.twitterUserId %><br>
+                    <strong>Username</strong>: <%= user.twitterUserName %><br>
+                    <strong>Display Name</strong>: <%= user.twitterDisplayName %><br>
+                    <strong>Token</strong>: <%= user.twitterToken %><br>
+                    <strong>Token Secret</strong>: <%= user.twitterTokenSecret %><br>
+                </p>
+
+            </div>
+        </div>
+
+        <!-- GOOGLE INFORMATION -->
+        <div class="col-md-6">
+            <div class="well">
+                <h3 class="text-danger"><span class="fa fa-google-plus"></span> Google</h3>
+
+                <p>
+                    <strong>OpenId</strong>: <%= user.openId %><br>
+                    <strong>Username</strong>: <%= user.googleUserName %><br>
+                    <strong>Display Name</strong>: <%= user.googleDisplayName %><br>
+                    <strong>Email</strong>: <%= user.googleEmail %><br>
+                </p>
+
+            </div>
+        </div>
+
+    </div>
+
+
+</div>
+</body>
+</html>

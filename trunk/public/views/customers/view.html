@@ -1,0 +1,13 @@
+<section data-ng-controller="CustomersController" data-ng-init="findOne()">
+    <span>{{customer.updatedAt | date:'medium'}}</span>/
+    <span>{{customer.name}}</span>
+    <h2>{{customer.description}}</h2>
+    <div>
+        <a class="btn" href="/#!/customers/{{customer.id}}/edit">
+            <i class="icon-edit"></i>
+        </a>
+        <a class="btn" data-ng-click="remove();">
+            <i class="icon-trash"></i>
+        </a>
+    </div>
+</section>

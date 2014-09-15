@@ -1,0 +1,74 @@
+<!-- Main content -->
+<div class="container-fluid" ng-init="fetchAllShows()">
+    <!-- Declare Modals here -->
+
+    <!-- Login Modal starts...-->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title margin-bottom"><i class="fa fa-lock"></i> Login or Register with:</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="margin-bottom">
+                        <a style="display:block" href="/signin" class="btn btn-default margin-bottom-sm"><i class="fa fa-user"></i> Login</a>
+                    </div>
+                    <div class="margin-bottom">
+                        <a style="display:block" href="/signup" class="btn btn-default"><i class="fa fa-user"></i> Signup</a>
+                    </div>
+                    <div class="margin-bottom">
+                        <a style="display:block" href="/auth/facebook" class="btn btn-primary"><i class="fa fa-facebook"></i> Facebook</a>
+                    </div>
+                    <div class="margin-bottom">
+                        <a style="display:block" href="/auth/twitter" class="btn btn-info"><i class="fa fa-twitter"></i> Twitter</a>
+                    </div>
+                    <div class="margin-bottom">
+                        <a style="display:block" href="/auth/google" class="btn btn-danger"><i class="fa fa-google-plus"></i> Google</a>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login Modal ends .. -->
+
+    <!-- End Modals -->
+    <div class="right-inner-addon ">
+        <i class="fa fa-search"></i>
+        <input type="search"
+               ng-model="searchListingTerm"
+               class="form-control"
+               ng-change="fetchShowsByKey()"
+               placeholder="Search" />
+    </div>
+    <h3>Listings</h3>
+    <span ng-hide="global.authenticated">(Please <a href="" data-toggle="modal" data-target="#loginModal">login</a> to view the complete details of a listing or to add your own listing)</span>
+    <hr>
+
+    <div class="container-fluid ticket" ng-repeat="show in shows">
+       <span class="circle"></span>
+       <div>
+        <i class="fa fa-film"></i> <strong>Name</strong>: {{show.show_name}}<br>
+        <i class="fa fa-building"></i> <strong>Venue</strong>: {{show.show_venue}}<br>
+        <i class="fa fa-clock-o"></i> <strong>Time</strong>: {{show.show_time|date:global.isMeridian?global.dateTimeFormatMeridian:global.dateTimeFormat}}<br>
+        <a ng-show="global.authenticated" ui-sref="viewListing({'showId':show.id})">View It!</a>
+       </div>
+    </div>
+
+
+    <h3>Listings around you</h3>
+    <hr>
+    <div class="row well">
+        <div class="col-md-12">
+            <google-map center="map.center" zoom="map.zoom">
+                <marker coords="marker.coords" options="marker.options" events="marker.events" idkey="marker.id" >
+                </marker>
+            </google-map>
+        </div>
+    </div>
+
+
+</div>

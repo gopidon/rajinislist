@@ -1,0 +1,22 @@
+<div class="well container">
+    <h2>Choose Language</h2>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="global.user.lang" name="optionsLang" id="optionsRadios1" ng-change="changeLang()" value="en">
+            English
+        </label>
+    </div>
+    <div class="radio">
+        <label>
+            <input type="radio" ng-model="global.user.lang" name="optionsLang" id="optionsRadios2" ng-change="changeLang()" value="fr">
+            French
+        </label>
+    </div>
+    <div class="radio disabled">
+        <label>
+            <input type="radio" ng-model="global.user.lang" name="optionsLang" id="optionsRadios3" ng-change="changeLang()" value="es" disabled>
+            Spanish
+        </label>
+    </div>
+</div>
+        <pre>{{global}}</pre>

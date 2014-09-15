@@ -1,0 +1,23 @@
+{
+  "name": "Aphelion NoSheets",
+  "version": "0.1.0",
+  "dependencies": {
+    "angular": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-mocks": "latest",
+    "angular-route": "latest",
+    "bootstrap": "3.1.1",
+    "angular-bootstrap": "0.11.0",
+    "angular-ui-utils": "0.0.4",
+    "jquery": "latest",
+    "ng-grid": "latest",
+    "angular-ui-router": "~0.2.10",
+    "angular-animate": "~1.2.20",
+    "moment": "2.1.0",
+    "angular-translate": "~2.2.0",
+    "angular-translate-loader-static-files": "~2.2.0",
+    "fontawesome": "~4.1.0",
+    "angular-google-maps": "~1.2.0"
+  }
+}
